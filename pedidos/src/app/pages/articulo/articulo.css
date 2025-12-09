@@ -1,0 +1,27 @@
+#fotoProducto{
+    width: 100%;
+    max-height: 200px;
+   object-fit: cover;
+}
+
+textarea{
+    display:block;
+    border-radius: 20px;
+    border: unset;
+    background-color: antiquewhite;
+    width: 100%;
+}
+
+cantidad-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    width: 100%;
+    border-radius: 20px;
+    border: unset;
+    background-color: antiquewhite;
+    font-size: 10px;
+    padding: 10px;
+}

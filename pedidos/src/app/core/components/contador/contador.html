@@ -1,0 +1,8 @@
+<div class="contador">
+  <button type="button" [disabled]="numero() <= 1" (click)="actualizarNumero(-1)">−</button>
+
+  
+  <span [textContent]="numero()" [attr.aria-label]="'Cantidad: ' + numero()"></span>
+
+  <button type="button" (click)="actualizarNumero(1)">+</button>
+</div>

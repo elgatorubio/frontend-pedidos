@@ -1,1 +1,12 @@
 <p>carrito works!</p>
+
+<div *ngFor="let item of cartService.carrito; trackBy: trackById">
+  <p>
+    producto: {{ item.idProducto }} - Cantidad: {{ item.cantidad }}
+    <button type="button" (click)="eliminarProducto(item.idProducto, item.cantidad)">
+      eliminar
+    </button>
+  </p>
+
+  <app-contador [cantidadInicial]="item.cantidad" (cantidadCambiada)="cartService.cambiarCantidadProducto(item.idProducto,$event)"></app-contador>
+</div>
