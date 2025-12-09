@@ -1,0 +1,49 @@
+
+/* tabs.css */
+.container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 8px;
+
+  height: 72px;                 /* ajusta a tu gusto */
+  padding: 8px 12px;
+  background: #fff;
+  border-top: 1px solid #e6e6e6;
+  z-index: 1000;                /* por encima del contenido */
+}
+
+.tab {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.tab a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.seleccionado {
+  background-color: rgba(180,0,159,0.231); 
+}
+
+.container img {
+  height: 28px;                 /* más pequeño para footer */
+  width: 28px;
+  object-fit: contain;
+}

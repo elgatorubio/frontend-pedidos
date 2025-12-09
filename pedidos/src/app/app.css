@@ -1,0 +1,4 @@
+/* app.css o en cada página */
+.page-content {
+  padding-bottom: 88px; /* > altura de la barra para que no tape el contenido */
+}

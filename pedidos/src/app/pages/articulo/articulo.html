@@ -1,0 +1,17 @@
+<img src="{{producto?.fotoUrl}}" alt="{{producto?.nombre}}">
+<ul>
+    <li *ngFor="let ingrediente of producto?.ingredientes">{{ingrediente}}</li>
+</ul>
+
+<div *ngif="producto?.esCeliaco">
+    <p>Apto celiaco</p>
+</div>
+
+<div *ngIf="producto?.esVegano">
+    <p>Apto vegano</p>
+</div>
+
+<label for="notas">notas</label>
+<textarea name="notas" id="notas" cols="30" rows="10"></textarea>
+<label for="cantidad">cantidad</label>
+<button>agregar al carrito</button>

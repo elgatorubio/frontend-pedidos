@@ -1,0 +1,38 @@
+header{
+    height: 80px;
+    background-color: rgb(64, 0, 255);
+    border-radius: 0 0 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    transition: 500ms ease-in-out;
+}
+
+h1{
+    font-size: xx-large;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.fade-in{
+    animation: fade-out 450ms ease-in-out backwards;
+    animation-direction: reverse;
+}
+
+.fade-out{
+    animation: fade-out 150ms ease-in-out;
+}
+
+.extendido{
+    height: 350px;
+    background-image: url("./../../../../assets/img/inicio.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+@keyframes fade-out {
+    50%{
+        opacity: 0;
+    }
+}
