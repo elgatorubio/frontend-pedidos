@@ -14,3 +14,10 @@ h3{
     padding: 20px 0;
     background-color: white;
 }
+/* en tarjeta-categoria.component.css */
+.categoria-bg {
+  min-height: 180px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}

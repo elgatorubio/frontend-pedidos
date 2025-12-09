@@ -3,7 +3,7 @@
     <li *ngFor="let ingrediente of producto?.ingredientes">{{ingrediente}}</li>
 </ul>
 
-<div *ngif="producto?.esCeliaco">
+<div *ngIf="producto?.esCeliaco">
     <p>Apto celiaco</p>
 </div>
 
