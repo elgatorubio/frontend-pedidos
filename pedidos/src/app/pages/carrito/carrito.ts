@@ -36,19 +36,55 @@ export class Carrito {
   }
 
   eliminarProducto(idProducto: number | string): void {
-  console.log('Eliminar producto', idProducto, 'tipo:', typeof idProducto);
+    console.log('Eliminar producto', idProducto, 'tipo:', typeof idProducto);
 
-  const id = Number(idProducto);
-  console.log('id numérico', id);
+    const id = Number(idProducto);
+    console.log('id numérico', id);
 
-  this.cartService.eliminarProducto(id);
+    this.cartService.eliminarProducto(id);
 
-  this.productosCarrito = this.productosCarrito.filter(
-    p => Number(p.id) !== id
-  );
+    this.productosCarrito = this.productosCarrito.filter(
+      p => Number(p.id) !== id
+    );
 
-  console.log('productosCarrito después:', this.productosCarrito);
-}
+    console.log('productosCarrito después:', this.productosCarrito);
+  }
+
+  // Obtener la cantidad de un producto en el carrito
+  getCantidad(idProducto: number | string): number {
+    const id = Number(idProducto);
+    const item = this.cartService.carrito.find(p => p.idProducto === id);
+    return item?.cantidad || 0;
+  }
+
+  // Calcular el precio total de un producto (precio * cantidad)
+  getPrecioTotal(producto: Producto): number {
+    const cantidad = this.getCantidad(producto.id);
+    return producto.precio * cantidad;
+  }
+
+  // Calcular el subtotal del carrito
+  getSubtotal(): number {
+    return this.productosCarrito.reduce((total, producto) => {
+      return total + this.getPrecioTotal(producto);
+    }, 0);
+  }
+
+  // Calcular el envío
+  getEnvio(): number {
+    return 50; // Envío fijo de $50
+  }
+
+  // Calcular el total del carrito
+  getTotal(): number {
+    return this.getSubtotal() + this.getEnvio();
+  }
+
+  // Manejar el cambio de cantidad desde el componente contador
+  onCantidadCambiada(idProducto: number | string, nuevaCantidad: number): void {
+    const id = Number(idProducto);
+    this.cartService.cambiarCantidadProducto(id, nuevaCantidad);
+  }
 
   trackById = (_: number, item: Producto) => item.id;
 }

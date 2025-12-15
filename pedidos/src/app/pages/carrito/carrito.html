@@ -20,7 +20,7 @@
             <span>Cantidad:</span>
             <app-contador
               [cantidadInicial]="item.cantidad"
-              (cantidadCambiada)="cartService.cambiarCantidadProducto(producto.id, $event)">
+              (cantidadCambiada)="onCantidadCambiada(producto.id, $event)">
             </app-contador>
           </div>
         </div>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="der">
-      <p class="precio">{{ producto.precio | currency:'USD':'symbol':'1.2-2' }}</p>
+      <p class="precio">{{ getPrecioTotal(producto) | currency:'USD':'symbol':'1.2-2' }}</p>
       <button
         type="button"
         class="btn-eliminar"
@@ -43,9 +43,11 @@
     <p>El carrito está vacío</p>
   </div>
 </div>
+
 <div class="flex-center">
-<a id="mas" [routerLink]="['/routerPath']" routerLinkActive="routerLinkActive">+</a>
+  <a id="mas" [routerLink]="['/routerPath']" routerLinkActive="routerLinkActive">+</a>
 </div>
+
 <section class="margen-chico" id="informacion">
   <h3>direccion de envio</h3>
   <div class="flex-apart" id="envio-container">
@@ -61,9 +63,9 @@
       <p class="negrita">total</p>
     </div>
     <div>
-      <p class="negrita">$<span>100</span></p>
-      <p>$<span>50</span></p>
-      <p class="negrita">$<span>110</span></p>
+      <p class="negrita">${{ getSubtotal() }}</p>
+      <p>${{ getEnvio() }}</p>
+      <p class="negrita">${{ getTotal() }}</p>
     </div>
   </div>
   <button>enviar mensaje</button>
