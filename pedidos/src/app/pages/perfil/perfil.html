@@ -1,18 +1,18 @@
-<form>
+<form #formulario="ngForm">
     <div>
         <label for="nombre">nombre</label>
-        <input type="text" name="" id="">
+        <input type="text" name="nombre" id="nombre" [(ngModel)]="perfil.nombre">
     </div>
     <div>
         <label for="direccion">direccion</label>
         <input type="text" name="direccion" id="direccion">
     </div>
     <div>
-        <label for=""></label>
+        <label for="">notas</label>
         <input type="text" name="notas" id="notas">
     </div>
     <div>
-        <label for=""></label>
+        <label for="">telefono</label>
         <input type="text" name="telefono" id="telefono">
     </div>
 </form>
