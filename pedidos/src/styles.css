@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     line-height: 1;
-    width: 90vw;
+    width: 95vw;
     overflow-x: hidden;
+    padding-bottom: 80px;
 }
 
 app-root{

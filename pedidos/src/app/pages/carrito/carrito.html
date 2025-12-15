@@ -1,12 +1,70 @@
 <p>carrito works!</p>
 
-<div *ngFor="let item of cartService.carrito; trackBy: trackById">
-  <p>
-    producto: {{ item.idProducto }} - Cantidad: {{ item.cantidad }}
-    <button type="button" (click)="eliminarProducto(item.idProducto, item.cantidad)">
-      eliminar
-    </button>
-  </p>
+<div id="tarjeta-container">
+  <div class="tarjeta-producto-container" *ngFor="let producto of productosCarrito; trackBy: trackById">
+    
+    <div class="izq"
+         [ngStyle]="{'background-image': 'url(' + producto.fotoUrl + ')'}">
+    </div>
 
-  <app-contador [cantidadInicial]="item.cantidad" (cantidadCambiada)="cartService.cambiarCantidadProducto(item.idProducto,$event)"></app-contador>
+    <div class="centro">
+      <ng-container *ngFor="let item of cartService.carrito">
+        <div *ngIf="item.idProducto === producto.id">
+          <h3>{{ producto.nombre }}</h3>
+
+          <p *ngIf="item.notas && item.notas.trim()" class="notas">
+            <strong>Notas:</strong> {{ item.notas }}
+          </p>
+
+          <div class="cantidad-control">
+            <span>Cantidad:</span>
+            <app-contador
+              [cantidadInicial]="item.cantidad"
+              (cantidadCambiada)="cartService.cambiarCantidadProducto(producto.id, $event)">
+            </app-contador>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="der">
+      <p class="precio">{{ producto.precio | currency:'USD':'symbol':'1.2-2' }}</p>
+      <button
+        type="button"
+        class="btn-eliminar"
+        (click)="eliminarProducto(producto.id)">
+        Eliminar
+      </button>
+    </div>
+
+  </div>
+
+  <div *ngIf="productosCarrito.length === 0" class="carrito-vacio">
+    <p>El carrito está vacío</p>
+  </div>
 </div>
+<div class="flex-center">
+<a id="mas" [routerLink]="['/routerPath']" routerLinkActive="routerLinkActive">+</a>
+</div>
+<section class="margen-chico" id="informacion">
+  <h3>direccion de envio</h3>
+  <div class="flex-apart" id="envio-container">
+    <div>
+      <h4>calle inventada</h4>
+      <p>santa fe 2000</p>
+    </div>
+    <a [routerLink]="['/perfil']">regresar</a>
+  </div>
+  <div id="monto">
+    <div>
+      <p class="negrita">subtotal</p>
+      <p class="negrita">total</p>
+    </div>
+    <div>
+      <p class="negrita">$<span>100</span></p>
+      <p>$<span>50</span></p>
+      <p class="negrita">$<span>110</span></p>
+    </div>
+  </div>
+  <button>enviar mensaje</button>
+</section>

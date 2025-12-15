@@ -8,20 +8,21 @@ import { Contador } from '../../core/components/contador/contador';
 import { signal } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
 import { Router } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-articulo',
   templateUrl: './articulo.html',
   styleUrl: './articulo.css',
   standalone: true,
-  imports: [CommonModule, Contador ],
+  imports: [CommonModule, Contador , FormsModule],
 })
 export class Articulo {
   headerService = inject(HeaderService);
   productosService = inject(ProductosService);
   cartService = inject(CartService);
   producto?: Producto;
+  notas: string = '';
   cantidad = signal(1);
   private router = inject(Router);
 
@@ -44,9 +45,14 @@ export class Articulo {
   }
 
   agregarAlCarrito() {
-    if (!this.producto) return;
-      this.cartService.agregarProducto(this.producto?.id, this.cantidad());
-      this.router.navigate(['/carrito']);
-    
-  }
+  if (!this.producto) return;
+  
+  this.cartService.agregarProducto(
+    this.producto.id, 
+    this.cantidad(), 
+    this.notas.trim() || undefined
+  );
+  
+  this.router.navigate(['/carrito']);
+}
 }

@@ -1,4 +1,5 @@
 export interface Cart {
-    idProducto: number;
-    cantidad: number;
+  idProducto: number;
+  cantidad: number;
+  notas?: string; 
 }

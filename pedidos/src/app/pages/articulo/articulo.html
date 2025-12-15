@@ -5,9 +5,9 @@ src="{{producto?.fotoUrl}}" alt="{{producto?.nombre}}">
 </ul>
 
 <label for="notas">notas</label>
-<textarea name="notas" id="notas" cols="30" rows="10"></textarea>
+<textarea name="notas" id="notas" cols="30" rows="10" [(ngModel)]="notas"></textarea>
 <div id="cantidad-container">
     <label for="cantidad">cantidad</label>
     <app-contador (cantidadCambiada)="cantidad.set($event)"></app-contador>
 </div>
-<button>agregar al carrito</button>
+<button (click)="agregarAlCarrito()">agregar al carrito</button>
